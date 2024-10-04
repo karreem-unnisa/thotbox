@@ -205,19 +205,23 @@ h2 {
 }
 
 .entry {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0; /* Increased margin for better separation */
-    padding: 10px; /* Added padding for better spacing */
+    display: flex; /* Use flexbox to align items horizontally */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    margin: 10px 0;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%; /* Ensure entries take full width */
 }
 
 .entry-text {
-    flex: 1;
+    flex: 1; /* Allow text to grow */
     margin-right: 10px; /* Space between text and date/time */
+}
+
+.date-time-container {
+    display: flex; /* Keep date/time and delete icon in a row */
+    align-items: center; /* Center items vertically */
 }
 
 .date-time {
@@ -230,6 +234,20 @@ h2 {
     cursor: pointer;
     color: #ff4d4d;
 }
+
+.details-container {
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: flex-end; /* Align to the right */
+    align-items: center; /* Center items vertically */
+    margin-top: 5px; /* Space between thought text and details */
+}
+
+.date-time {
+    font-size: 0.8rem;
+    color: #666;
+    margin-right: 10px; /* Space between date/time and delete icon */
+}
+
 
 /* Responsive Design */
 @media (max-width: 1200px) {

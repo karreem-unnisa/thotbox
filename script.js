@@ -45,10 +45,15 @@ function appendThought(text, dateTime) {
     thoughtText.textContent = text;
     newThought.appendChild(thoughtText);
 
+    // Create a container for date/time and delete icon
+    const detailsContainer = document.createElement('div');
+    detailsContainer.className = 'details-container';
+    detailsContainer.style.display = 'none'; // Initially hide details
+
     const dateTimeElement = document.createElement('p');
     dateTimeElement.className = 'date-time';
     dateTimeElement.textContent = `Shared on: ${dateTime}`;
-    newThought.appendChild(dateTimeElement);
+    detailsContainer.appendChild(dateTimeElement);
 
     const deleteIcon = document.createElement('i');
     deleteIcon.className = 'fas fa-trash delete-icon';
@@ -56,12 +61,19 @@ function appendThought(text, dateTime) {
         thoughtsContainer.removeChild(newThought);
         removeThoughtFromStorage(text, dateTime);
     };
-    newThought.appendChild(deleteIcon);
+    detailsContainer.appendChild(deleteIcon);
 
+    // Append the details container
+    newThought.appendChild(detailsContainer);
     thoughtsContainer.appendChild(newThought);
+
+    // Show the details after a short timeout to allow for UI smoothness
+    setTimeout(() => {
+        detailsContainer.style.display = 'flex'; // Show details
+    }, 100); // Adjust timeout as necessary
 }
 
-// Function to append a new diary entry to the container
+
 function appendDiaryEntry(text, dateTime) {
     const diaryContainer = document.getElementById('diary-container');
     const newDiaryEntry = document.createElement('div');
@@ -72,10 +84,14 @@ function appendDiaryEntry(text, dateTime) {
     diaryText.textContent = text;
     newDiaryEntry.appendChild(diaryText);
 
+    // Create a container for date/time and delete icon
+    const dateTimeContainer = document.createElement('div');
+    dateTimeContainer.className = 'date-time-container';
+
     const dateTimeElement = document.createElement('p');
     dateTimeElement.className = 'date-time';
     dateTimeElement.textContent = `Saved on: ${dateTime}`;
-    newDiaryEntry.appendChild(dateTimeElement);
+    dateTimeContainer.appendChild(dateTimeElement);
 
     const deleteIcon = document.createElement('i');
     deleteIcon.className = 'fas fa-trash delete-icon';
@@ -83,10 +99,12 @@ function appendDiaryEntry(text, dateTime) {
         diaryContainer.removeChild(newDiaryEntry);
         removeDiaryFromStorage(text, dateTime);
     };
-    newDiaryEntry.appendChild(deleteIcon);
+    dateTimeContainer.appendChild(deleteIcon);
 
+    newDiaryEntry.appendChild(dateTimeContainer);
     diaryContainer.appendChild(newDiaryEntry);
 }
+
 
 // Function to remove a thought from local storage
 function removeThoughtFromStorage(text, dateTime) {
