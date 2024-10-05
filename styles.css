@@ -249,6 +249,21 @@ h2 {
 }
 
 
+footer {
+    background-color: #b9a4df; /* Dark background */
+    color: white; /* White text */
+    text-align: center; /* Center the text */
+    padding: 15px 0; /* Padding for top and bottom */
+    position: relative; /* Ensure it's positioned properly */
+    bottom: 0; /* Position at the bottom */
+    width: 100%; /* Full width */
+    font-size: 14px; /* Slightly smaller font size */
+}
+
+footer p {
+    margin: 0; /* Remove default margin */
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .content-left,
